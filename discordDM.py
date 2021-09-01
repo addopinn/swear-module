@@ -8,7 +8,7 @@ from Dtime import Uptime
 import os
 client = discord.Client()
 Uptime.uptimeset()
-token = "ODIwMjEwODQxOTAzMzAwNjE4.YEx23w.poCBECdBy70mWX7VAt2AQRLxWJE"
+token = "(your token)"
 
 
 @client.event
@@ -17,7 +17,7 @@ async def on_ready():
     print(client.user.id)
     print('로그인 완료')
     print("="*50)
-    play = discord.Game("DPLY호스팅 문의 받는 중")
+    play = discord.Game("~~하는중")
     await client.change_presence(status=discord.Status.online, activity=play)
 
 @client.event
@@ -29,7 +29,7 @@ async def on_message(message):
             embed = discord.Embed(title=(f"``{message.author}``님의 메세지 입니다"), color=0x00ff13, timestamp=message.created_at)
             embed.add_field(name="문의 내용", value=f"``{message.content}``", inline=True)
             embed.set_footer(text=f"!답변 <@{message.author.id}> 을 통해 답변이 가능합니다.")
-            await client.get_channel(820482259966361621).send(embed=embed)
+            await client.get_channel({문의 받을 채널 ID}).send(embed=embed)
     #디엠을 받는 코드
     if message.content.startswith('!답변'):
         if message.author.guild_permissions.manage_messages:
@@ -47,7 +47,7 @@ async def on_message(message):
         msg = message.content[28:]
         embed = discord.Embed(title=f"새 리포트!")
         embed.add_field(name="리포트", value=f"``{message.content}``", inline=True)
-        await client.get_channel(822484207678259270).send(embed=embed)
+        await client.get_channel({리포트받을 채널 ID}).send(embed=embed)
         await message.channel.send("리포트가 성공적으로 전송되었습니당!")
 
     #리붓
